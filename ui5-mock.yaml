@@ -1,5 +1,3 @@
-# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
-
 specVersion: "3.1"
 metadata:
   name: namespace1.productsmanager
@@ -24,13 +22,8 @@ server:
         port: 35729
         path: webapp
         delay: 300
-    - name: sap-fe-mockserver
-      beforeMiddleware: csp
+    - name: fiori-tools-preview
+      afterMiddleware: fiori-tools-appreload
       configuration:
-        mountPath: /
-        services:
-          - urlPath: /sap/opu/odata/sap/SEPMRA_PROD_MAN
-            metadataPath: ./webapp/localService/metadata.xml
-            mockdataPath: ./webapp/localService/data
-            generateMockData: true
-        annotations: []
+        component: namespace1.productsmanager
+        ui5Theme: sap_horizon
